@@ -5,6 +5,8 @@ on:
     paths:
       - "json/**"
       - "generate_ics.py"
+      - "index.html"
+      - ".github/workflows/deploy-ics.yml"
   workflow_dispatch: # Allow manual triggers
 
 jobs:
