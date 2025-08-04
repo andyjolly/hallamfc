@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Hallam FC//Fixtures Calendar//2024-2025//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Hallam FC Fixtures 2024-2025
+X-WR-CALDESC:All Hallam FC football fixtures for the 2024-2025 season
+X-WR-TIMEZONE:Europe/London
+
+BEGIN:VEVENT
+UID:hallam-fc-2024-2025-sheffieldfc-league-home
+DTSTAMP:2025-08-04T21:35:00Z
+DTSTART:20250817T140000Z
+DTEND:20250817T160000Z
+SUMMARY:👕 Hallam FC v Sheffield FC
+DESCRIPTION:⚽ Watch Hallam FC take on Sheffield FC in the League.\n\nCheck the website for tickets\, news and updates:\nhttps://hallamfc.co.uk\n\nJoin the discussion on X:\nhttps://x.com/HallamFC1860\n\nCheck for highlights on YouTube:\nhttps://www.youtube.com/@hallamfc1860
+LOCATION:Sandygate, Sandygate Road, Sheffield, S10 5SE
+STATUS:CONFIRMED
+SEQUENCE:1
+TRANSP:TRANSPARENT
+END:VEVENT
+
+BEGIN:VEVENT
+UID:hallam-fc-2024-2025-worksoptown-league-away
+DTSTAMP:2025-08-04T21:35:00Z
+DTSTART:20250824T150000Z
+DTEND:20250824T170000Z
+SUMMARY:Worksop Town v 👕 Hallam FC
+DESCRIPTION:⚽ Watch Hallam FC take on Worksop Town in the League.\n\nCheck the website for tickets\, news and updates:\nhttps://hallamfc.co.uk\n\nJoin the discussion on X:\nhttps://x.com/HallamFC1860\n\nCheck for highlights on YouTube:\nhttps://www.youtube.com/@hallamfc1860
+LOCATION:Windsor Foodservice Stadium, Windsor Foodservice Stadium, Worksop
+STATUS:CONFIRMED
+SEQUENCE:1
+TRANSP:TRANSPARENT
+END:VEVENT
+
+BEGIN:VEVENT
+UID:hallam-fc-2024-2025-stocksbridgeparksteels-league-home
+DTSTAMP:2025-08-04T21:35:00Z
+DTSTART:20250831T140000Z
+DTEND:20250831T160000Z
+SUMMARY:👕 Hallam FC v Stocksbridge Park Steels
+DESCRIPTION:⚽ Watch Hallam FC take on Stocksbridge Park Steels in the League.\n\nCheck the website for tickets\, news and updates:\nhttps://hallamfc.co.uk\n\nJoin the discussion on X:\nhttps://x.com/HallamFC1860\n\nCheck for highlights on YouTube:\nhttps://www.youtube.com/@hallamfc1860
+LOCATION:Sandygate, Sandygate Road, Sheffield, S10 5SE
+STATUS:CONFIRMED
+SEQUENCE:1
+TRANSP:TRANSPARENT
+END:VEVENT
+
+END:VCALENDAR
