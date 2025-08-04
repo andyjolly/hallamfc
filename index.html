@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hallam FC Fixtures Calendar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+        background-color: #f8f9fa;
+      }
+      .container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .calendar-link {
+        display: inline-block;
+        margin: 10px;
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      .calendar-link:hover {
+        background-color: #0056b3;
+      }
+      .download-link {
+        background-color: #28a745;
+      }
+      .download-link:hover {
+        background-color: #1e7e34;
+      }
+      .qr-code {
+        text-align: center;
+        margin: 20px 0;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+      }
+      .instructions {
+        background-color: #e9ecef;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      .instructions ol {
+        margin-left: 20px;
+      }
+      .instructions code {
+        background-color: #f1f3f4;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: monospace;
+      }
+      .info-box {
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .social-links a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .social-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>👕 Hallam FC Fixtures Calendar</h1>
+
+      <div class="info-box">
+        <strong>🔄 Automatic Updates:</strong> Subscribe to this calendar and it
+        will automatically update when new fixtures are added or existing ones
+        are modified. No need to re-download or re-subscribe!
+      </div>
+
+      <h2>📅 Available Seasons</h2>
+
+      <div id="calendar-links">
+        <h3>2024-2025 Season</h3>
+        <p>
+          Subscribe to this calendar to get all Hallam FC fixtures for the
+          2024-2025 season.
+        </p>
+
+        <a
+          href="https://calendar.google.com/calendar/r?cid=https://andyjolly.github.io/hallamfc/2024-2025.ics"
+          class="calendar-link"
+        >
+          📅 Add to Google Calendar
+        </a>
+
+        <a
+          href="webcal://andyjolly.github.io/hallamfc/2024-2025.ics"
+          class="calendar-link"
+        >
+          📅 Add to Apple Calendar
+        </a>
+
+        <a
+          href="https://andyjolly.github.io/hallamfc/2024-2025.ics"
+          class="calendar-link download-link"
+        >
+          📥 Download ICS File
+        </a>
+
+        <div class="qr-code">
+          <h4>📱 Scan with your phone</h4>
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://andyjolly.github.io/hallamfc/2024-2025.ics"
+            alt="Calendar QR Code"
+          />
+          <p>
+            <small
+              >Scan this QR code with your phone's camera to quickly add the
+              calendar</small
+            >
+          </p>
+        </div>
+      </div>
+
+      <h2>📋 Manual Instructions</h2>
+
+      <div class="instructions">
+        <h3>Google Calendar</h3>
+        <ol>
+          <li>Open Google Calendar</li>
+          <li>Click the <strong>+</strong> next to "Other calendars"</li>
+          <li>Select "From URL"</li>
+          <li>
+            Enter:
+            <code>https://andyjolly.github.io/hallamfc/2024-2025.ics</code>
+          </li>
+          <li>Click "Add calendar"</li>
+        </ol>
+
+        <h3>Apple Calendar</h3>
+        <ol>
+          <li>Open Calendar app</li>
+          <li>Go to File → New Calendar Subscription</li>
+          <li>
+            Enter:
+            <code>https://andyjolly.github.io/hallamfc/2024-2025.ics</code>
+          </li>
+          <li>Click "Subscribe"</li>
+        </ol>
+
+        <h3>Outlook</h3>
+        <ol>
+          <li>Open Outlook Calendar</li>
+          <li>Right-click on "Other Calendars"</li>
+          <li>Select Add Calendar → From Internet</li>
+          <li>
+            Enter:
+            <code>https://andyjolly.github.io/hallamfc/2024-2025.ics</code>
+          </li>
+        </ol>
+
+        <h3>Other Calendar Apps</h3>
+        <ol>
+          <li>Find the "Add Calendar" or "Subscribe to Calendar" option</li>
+          <li>
+            Enter the URL:
+            <code>https://andyjolly.github.io/hallamfc/2024-2025.ics</code>
+          </li>
+          <li>Save or subscribe to the calendar</li>
+        </ol>
+      </div>
+
+      <h2>🏟️ Home Ground</h2>
+      <p>
+        Hallam FC's home fixtures are played at
+        <strong>Sandygate, Sandygate Road, Sheffield, S10 5SE</strong>.
+      </p>
+
+      <h2>🔗 More Information</h2>
+      <div class="social-links">
+        <a href="https://hallamfc.co.uk/" target="_blank"
+          >🌐 Official Website</a
+        >
+        <a href="https://x.com/HallamFC1860/" target="_blank">🐦 Twitter/X</a>
+        <a href="https://www.youtube.com/@hallamfc1860/" target="_blank"
+          >📺 YouTube</a
+        >
+      </div>
+
+      <div class="info-box">
+        <strong>💡 Tip:</strong> Once you've subscribed to the calendar, it will
+        automatically sync across all your devices and update whenever new
+        fixtures are added or existing ones are modified.
+      </div>
+    </div>
+  </body>
+</html>
