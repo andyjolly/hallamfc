@@ -18,7 +18,20 @@ An ICS (iCalendar) file is a standard format for sharing calendar events. It can
 This repository uses a JSON-based approach for better maintainability:
 
 1. **Edit JSON files** - Add or modify fixtures in readable JSON format
-2. **Run the generator script** - Use `python3 generate_ics.py <season>.json` to create the ICS file
+2. **Run the generator script** - Use `python3 generate_ics.py <season>` to create the ICS file
+3. **Import the ICS file** - Add the generated ICS file to your calendar application
+
+## Directory Structure
+
+```
+hallamfc/
+├── json/           # JSON fixture files
+│   └── 2024-2025.json
+├── ics/            # Generated ICS files
+│   └── 2024-2025.ics
+├── generate_ics.py # Script to generate ICS files
+└── README.md
+```
 
 ## JSON File Format
 
@@ -72,11 +85,12 @@ Each season has its own JSON file (e.g., `2024-2025.json`) containing an array o
 
 ```bash
 # Generate ICS file from JSON data
-python3 generate_ics.py 2024-2025.json
+python3 generate_ics.py 2024-2025
 
 # The script will automatically:
+# - Find the JSON file (json/2024-2025.json)
 # - Extract season from filename (2024-2025.json → 2024/25)
-# - Generate output file named after season (2024-2025.ics)
+# - Generate output file in ics/ directory (ics/2024-2025.ics)
 # - Create unique UIDs for each fixture
 # - Format descriptions with social media links
 ```
@@ -85,8 +99,13 @@ python3 generate_ics.py 2024-2025.json
 
 ```bash
 # Generate the fixtures calendar
-python3 generate_ics.py 2024-2025.json
-# Output: Successfully generated '2024-2025.ics' with 3 fixtures
+python3 generate_ics.py 2024-2025
+# Output: Successfully generated 'ics/2024-2025.ics' with 3 fixtures
+
+# If file not found, shows available options
+python3 generate_ics.py 2025-2026
+# Output: Available JSON files: ['2024-2025.json']
+# Error: Could not find JSON file for season '2025-2026'
 ```
 
 ## Calendar Features

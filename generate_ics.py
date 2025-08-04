@@ -139,33 +139,62 @@ def generate_ics_content(data, season):
     return "\n".join(lines)
 
 
+def find_json_file(season_input):
+    """Find JSON file based on season input."""
+    # Try different possible locations and formats
+    possible_paths = [
+        f"json/{season_input}.json",
+        f"{season_input}.json",
+        f"json/{season_input.replace('-', '_')}.json",
+        f"{season_input.replace('-', '_')}.json"
+    ]
+    
+    for path in possible_paths:
+        if Path(path).exists():
+            return path
+    
+    # If not found, list available files
+    json_files = list(Path("json").glob("*.json")) if Path("json").exists() else []
+    if json_files:
+        print(f"Available JSON files: {[f.name for f in json_files]}")
+    else:
+        print("No JSON files found in json/ directory")
+    
+    raise FileNotFoundError(f"Could not find JSON file for season '{season_input}'")
+
+
 def main():
     parser = argparse.ArgumentParser(description='Generate ICS file from JSON fixture data')
-    parser.add_argument('input', help='Input JSON file with fixture data')
+    parser.add_argument('season', help='Season name (e.g., 2024-2025)')
     
     args = parser.parse_args()
     
+    # Find the JSON file
+    try:
+        json_file = find_json_file(args.season)
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+        return 1
+    
     # Load fixture data
     try:
-        data = load_fixtures(args.input)
-    except FileNotFoundError:
-        print(f"Error: Could not find file '{args.input}'")
-        return 1
+        data = load_fixtures(json_file)
     except json.JSONDecodeError as e:
-        print(f"Error: Invalid JSON in '{args.input}': {e}")
+        print(f"Error: Invalid JSON in '{json_file}': {e}")
         return 1
     
     # Extract season from filename
-    try: 
-        season = extract_season_from_filename(args.input)
-    except ValueError as e:
-        print(e)
+    season = extract_season_from_filename(json_file)
     
     # Generate ICS content
     ics_content = generate_ics_content(data, season)
     
-    # Determine output file
-    output_file = f"{season}.ics"
+    # Determine output file in ics/ directory
+    input_filename = Path(json_file).stem  # Get filename without extension
+    output_file = f"ics/{input_filename}.ics"
+    
+    # Create ics directory if it doesn't exist
+    Path("ics").mkdir(exist_ok=True)
     
     # Write ICS file
     try:
