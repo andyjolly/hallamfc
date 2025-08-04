@@ -27,11 +27,38 @@ This repository uses a JSON-based approach for better maintainability:
 hallamfc/
 ├── json/           # JSON fixture files
 │   └── 2024-2025.json
-├── ics/            # Generated ICS files
-│   └── 2024-2025.ics
+├── .github/        # GitHub Actions workflows
+│   └── workflows/
+│       └── deploy-ics.yml
 ├── generate_ics.py # Script to generate ICS files
+├── .gitignore      # Excludes generated ICS files
 └── README.md
 ```
+
+## Automated Deployment
+
+This repository uses GitHub Actions to automatically generate and deploy ICS files to GitHub Pages.
+
+### How it works:
+
+1. **Edit JSON files** in the `json/` directory
+2. **Commit and push** changes to GitHub
+3. **GitHub Actions** automatically:
+   - Generates ICS files from JSON data
+   - Deploys them to GitHub Pages
+4. **Public access** via URLs like `https://username.github.io/hallamfc/2024-2025.ics`
+
+### Local Development
+
+For local testing, you can still run the script manually:
+
+```bash
+# Generate ICS files locally (for testing)
+python3 generate_ics.py 2024-2025
+# Output: Successfully generated 'ics/2024-2025.ics' with 3 fixtures
+```
+
+Note: Generated ICS files are ignored by git and only exist on GitHub Pages.
 
 ## JSON File Format
 
