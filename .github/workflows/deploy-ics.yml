@@ -25,6 +25,11 @@ jobs:
           # Create ics directory
           mkdir -p ics
 
+          # Copy index.html if it exists
+          if [ -f "index.html" ]; then
+            cp index.html ics/
+          fi
+
           # Generate ICS files for all JSON files
           for json_file in json/*.json; do
             if [ -f "$json_file" ]; then
