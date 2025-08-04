@@ -1,0 +1,46 @@
+name: Deploy ICS Files
+
+on:
+  push:
+    paths:
+      - "json/**"
+      - "generate_ics.py"
+  workflow_dispatch: # Allow manual triggers
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Generate ICS files
+        run: |
+          # Create ics directory
+          mkdir -p ics
+
+          # Generate ICS files for all JSON files
+          for json_file in json/*.json; do
+            if [ -f "$json_file" ]; then
+              season=$(basename "$json_file" .json)
+              echo "Generating ICS for season: $season"
+              python3 generate_ics.py "$season"
+            fi
+          done
+
+          # List generated files
+          echo "Generated ICS files:"
+          ls -la ics/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ics
+          destination_dir: .
