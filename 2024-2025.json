@@ -1,0 +1,33 @@
+[
+  {
+    "date": "2025-08-17",
+    "kick-off": "14:00",
+    "competition": "League",
+    "opponent": "Sheffield FC",
+    "is_home": true,
+    "last_updated": "2025-08-04T21:35:00Z",
+    "version": 1
+  },
+  {
+    "date": "2025-08-24",
+    "kick-off": "15:00",
+    "competition": "League",
+    "opponent": "Worksop Town",
+    "is_home": false,
+    "away_ground": {
+      "name": "Windsor Foodservice Stadium",
+      "address": "Windsor Foodservice Stadium, Worksop"
+    },
+    "last_updated": "2025-08-04T21:35:00Z",
+    "version": 1
+  },
+  {
+    "date": "2025-08-31",
+    "kick-off": "14:00",
+    "competition": "League",
+    "opponent": "Stocksbridge Park Steels",
+    "is_home": true,
+    "last_updated": "2025-08-04T21:35:00Z",
+    "version": 1
+  }
+]
