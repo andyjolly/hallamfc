@@ -31,9 +31,33 @@ def generate_uid(fixture, season):
     competition_clean = re.sub(r'[^a-zA-Z0-9]', '', fixture['competition'].lower())
     home_away = "home" if fixture['is_home'] else "away"
     date_clean = fixture['date'].replace('-', '')
-    time_clean = fixture['kick-off'].replace(':', '')
+    
+    # Get kick-off time for UID generation
+    kick_off_time = get_kick_off_time(fixture)
+    time_clean = kick_off_time.replace(':', '')
     
     return f"hallam-fc-{season}-{opponent_clean}-{competition_clean}-{home_away}"
+
+
+def get_default_kick_off(date_str):
+    """Get default kick-off time based on day of week."""
+    date_obj = datetime.datetime.strptime(date_str, "%Y-%m-%d")
+    weekday = date_obj.weekday()  # Monday=0, Sunday=6
+
+    # Weekend games (Saturday=5, Sunday=6): 3:00 PM
+    if weekday >= 5:  # Saturday or Sunday
+        return "15:00"
+    # Midweek games (Monday-Friday): 7:45 PM
+    else:
+        return "19:45"
+
+
+def get_kick_off_time(fixture):
+    """Get kick-off time from fixture, using default if not specified."""
+    if 'kick_off' in fixture and fixture['kick_off']:
+        return fixture['kick_off']
+    else:
+        return get_default_kick_off(fixture['date'])
 
 
 def format_datetime(date_str, time_str):
@@ -88,11 +112,14 @@ def generate_ics_content(data, season):
         # Generate UID
         uid = generate_uid(fixture, season)
         
+        # Get kick-off time (use default if not specified)
+        kick_off_time = get_kick_off_time(fixture)
+
         # Format start and end times
-        start_time = format_datetime(fixture['date'], fixture['kick-off'])
+        start_time = format_datetime(fixture['date'], kick_off_time)
         
         # Calculate end time (2 hours after start)
-        start_dt = datetime.datetime.strptime(fixture['date'] + " " + fixture['kick-off'], "%Y-%m-%d %H:%M")
+        start_dt = datetime.datetime.strptime(fixture['date'] + " " + kick_off_time, "%Y-%m-%d %H:%M")
         end_dt = start_dt + datetime.timedelta(hours=2)
         end_time = end_dt.strftime("%Y%m%dT%H%M%SZ")
         
