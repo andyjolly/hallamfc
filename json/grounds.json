@@ -1,0 +1,102 @@
+{
+  "Ashington": {
+    "name": "Woodhorn Lane",
+    "address": "Ashington, Northumberland, NE63 9NW"
+  },
+  "Bishop Auckland": {
+    "name": "Heritage Park",
+    "address": "St. John's Road, Bishop Auckland, County Durham, DL14 6PA"
+  },
+  "Blyth Spartans": {
+    "name": "Croft Park",
+    "address": "Plessey Road, Blyth, Northumberland, NE24 3JE"
+  },
+  "Blyth Town": {
+    "name": "South Newsham Playing Fields",
+    "address": "Blyth, Northumberland"
+  },
+  "Bradford (Park Avenue)": {
+    "name": "Horsfall Stadium",
+    "address": "Bradford, West Yorkshire, BD6 2NG"
+  },
+  "Bridlington Town": {
+    "name": "Queensgate",
+    "address": "Bridlington, East Riding of Yorkshire, YO16 7LN"
+  },
+  "Brighouse Town": {
+    "name": "St. Giles Road",
+    "address": "Brighouse, West Yorkshire, HD6 1PL"
+  },
+  "Consett": {
+    "name": "Belle View Stadium",
+    "address": "Consett, County Durham, DH8 7BF"
+  },
+  "Dunston": {
+    "name": "Dunston UTS Stadium",
+    "address": "Dunston, Gateshead, NE11 9HS"
+  },
+  "Emley AFC": {
+    "name": "Fantasy Island Stadium",
+    "address": "Emley, Huddersfield, West Yorkshire, HD8 9QZ"
+  },
+  "Garforth Town": {
+    "name": "Bannister Prentice Stadium",
+    "address": "Garforth, Leeds, West Yorkshire, LS25 2PF"
+  },
+  "Grimsby Borough": {
+    "name": "Bradley Football Development Centre",
+    "address": "Grimsby, North East Lincolnshire, DN37 0AG"
+  },
+  "Hallam": {
+    "name": "Sandygate",
+    "address": "Sandygate Road, Sheffield, South Yorkshire, S10 5SE"
+  },
+  "Heaton Stannington": {
+    "name": "Grounsell Park",
+    "address": "Heaton Stannington, Newcastle upon Tyne, NE7 7HE"
+  },
+  "Lincoln United": {
+    "name": "Ashby Avenue",
+    "address": "Lincoln, Lincolnshire, LN6 0DY"
+  },
+  "Matlock Town": {
+    "name": "Causeway Lane",
+    "address": "Matlock, Derbyshire, DE4 3AR"
+  },
+  "Newton Aycliffe": {
+    "name": "Moore Lane Park",
+    "address": "Newton Aycliffe, County Durham, DL5 4HT"
+  },
+  "North Ferriby": {
+    "name": "Church Road",
+    "address": "North Ferriby, East Riding of Yorkshire, HU14 3BQ"
+  },
+  "Ossett United": {
+    "name": "Ingfield",
+    "address": "Ossett, Wakefield, West Yorkshire, WF5 0HD"
+  },
+  "Pontefract Collieries": {
+    "name": "Skinner Lane",
+    "address": "Pontefract, West Yorkshire, WF8 4PG"
+  },
+  "Redcar Athletic": {
+    "name": "Green Lane",
+    "address": "Redcar, Cleveland, TS10 3RW"
+  },
+  "Sheffield FC": {
+    "name": "Coach and Horses Ground",
+    "address": "Dronfield, Derbyshire, S18 2GD"
+  },
+  "Silsden": {
+    "name": "Keighley Road",
+    "address": "Silsden, West Yorkshire, BD20 0EH"
+  },
+  "Stocksbridge Park Steels": {
+    "name": "Look Local Stadium",
+    "address": "Stocksbridge, Sheffield, South Yorkshire, S36 2AN"
+  },
+  "Worksop Town": {
+    "name": "Windsor Foodservice Stadium",
+    "address": "Worksop, Nottinghamshire, S80 1UH"
+  }
+}

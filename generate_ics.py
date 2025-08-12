@@ -16,6 +16,20 @@ def load_fixtures(json_file):
         return json.load(f)
 
 
+def load_grounds():
+    """Load grounds data from JSON file."""
+    grounds_file = "json/grounds.json"
+    try:
+        with open(grounds_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Warning: Grounds file '{grounds_file}' not found. Using fallback data.")
+        return {}
+    except json.JSONDecodeError as e:
+        print(f"Warning: Invalid JSON in '{grounds_file}': {e}. Using fallback data.")
+        return {}
+
+
 def extract_season_from_filename(filename):
     """Extract season from filename like '2024-2025.json'."""
     match = re.search(r'(\d{4})-(\d{4})', filename)
@@ -91,7 +105,7 @@ def escape_ics_text(text):
     return text
 
 
-def generate_ics_content(data, season):
+def generate_ics_content(data, season, grounds_data):
     """Generate ICS content from fixture data."""
     lines = [
         "BEGIN:VCALENDAR",
@@ -105,8 +119,11 @@ def generate_ics_content(data, season):
         ""
     ]
     
-    # Home ground address
-    home_address = "Sandygate, Sandygate Road, Sheffield, S10 5SE"
+    # Get Hallam's home ground data
+    hallam_ground = grounds_data.get("Hallam")
+    if not hallam_ground:
+        raise ValueError("Hallam not found in grounds.json. Please add Hallam to the grounds data.")
+    home_address = f"{hallam_ground['name']}, {hallam_ground['address']}"
     
     for fixture in data:
         # Generate UID
@@ -137,7 +154,12 @@ def generate_ics_content(data, season):
         if fixture['is_home']:
             location = home_address
         else:
-            location = fixture['away_ground']['name'] + ", " + fixture['away_ground']['address']
+            # Get opponent's ground data from grounds.json
+            opponent_ground = grounds_data.get(fixture['opponent'])
+            if opponent_ground:
+                location = f"{opponent_ground['name']}, {opponent_ground['address']}"
+            else:
+                raise ValueError(f"Opponent '{fixture['opponent']}' not found in grounds.json. Please add this club to the grounds data.")
         
         # Use individual fixture metadata
         last_updated = fixture.get('last_updated', datetime.datetime.utcnow().isoformat() + 'Z')
@@ -170,8 +192,10 @@ def find_json_file(season_input):
     """Find JSON file based on season input."""
     # Try different possible locations and formats
     possible_paths = [
+        f"json/fixtures/{season_input}.json",
         f"json/{season_input}.json",
         f"{season_input}.json",
+        f"json/fixtures/{season_input.replace('-', '_')}.json",
         f"json/{season_input.replace('-', '_')}.json",
         f"{season_input.replace('-', '_')}.json"
     ]
@@ -182,10 +206,12 @@ def find_json_file(season_input):
     
     # If not found, list available files
     json_files = list(Path("json").glob("*.json")) if Path("json").exists() else []
-    if json_files:
-        print(f"Available JSON files: {[f.name for f in json_files]}")
+    fixtures_files = list(Path("json/fixtures").glob("*.json")) if Path("json/fixtures").exists() else []
+    all_files = json_files + fixtures_files
+    if all_files:
+        print(f"Available JSON files: {[f.name for f in all_files]}")
     else:
-        print("No JSON files found in json/ directory")
+        print("No JSON files found in json/ or json/fixtures/ directories")
     
     raise FileNotFoundError(f"Could not find JSON file for season '{season_input}'")
 
@@ -213,8 +239,11 @@ def main():
     # Extract season from filename
     season = extract_season_from_filename(json_file)
     
+    # Load grounds data
+    grounds_data = load_grounds()
+    
     # Generate ICS content
-    ics_content = generate_ics_content(data, season)
+    ics_content = generate_ics_content(data, season, grounds_data)
     
     # Determine output file in ics/ directory
     input_filename = Path(json_file).stem  # Get filename without extension
